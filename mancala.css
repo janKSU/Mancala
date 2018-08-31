@@ -1,3 +1,7 @@
+div {
+    box-sizing: border-box;
+}
+
 .board {
     display: flex; /* or inline-flex */
     border: 2px black solid;

@@ -70,12 +70,19 @@ function playPit(clickedPlayer, clickedPit){
             var lastPlacedPit = clickedPit;
             var lastPlayer = placePlayer;
             for (let i = 0; i < clickedPebbles; i++) {
-                if (placePit >= 6) {
-                    let x = getCoord(pebbleSize, pitWidth - pebbleSize);
-                    let y = getCoord(pebbleSize, pitHeight - pebbleSize);
-                    board[placePlayer].push({x: x, y: y});
-                    placePlayer = (placePlayer + 1) % 2;
-                    placePit = 0;
+                if (placePit >= 6 ) {
+                    if (placePlayer === clickedPlayer){
+                        let x = getCoord(pebbleSize, pitWidth - pebbleSize);
+                        let y = getCoord(pebbleSize, pitHeight - pebbleSize);
+                        board[placePlayer].push({x: x, y: y});
+                        placePlayer = (placePlayer + 1) % 2;
+                        placePit = 0;
+                    } else{
+                        i--;
+                        placePlayer = (placePlayer + 1) % 2;
+                        placePit = 0;
+                    }
+
                 } else {
                     addPebble(placePlayer, placePit);
                     lastPlacedPit = placePit;
